@@ -1,4 +1,8 @@
+package hackpkg;
 import org.junit.Test;
+
+import hackpkg.Library;
+
 import static org.junit.Assert.*;
 
 /*

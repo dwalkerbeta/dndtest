@@ -1,10 +1,10 @@
 package hackpkg;
+
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.bson.Document;
-
+import static com.mongodb.client.model.Filters.*;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
@@ -19,7 +19,7 @@ import clarifai2.dto.prediction.Concept;
 public class Main {
 
 	public Main() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public static void main(String[] args) {
@@ -27,9 +27,10 @@ public class Main {
 		
 		MongoDatabase db = mongoClient.getDatabase("dnd");
 		
-		MongoCollection collection = db.getCollection("monsters");
+		MongoCollection<Document> collection = db.getCollection("monsters");
 		
 		MongoCursor<Document> cursor = collection.find().iterator();
+		
 		try {
 		    while (cursor.hasNext()) {
 		        System.out.println(cursor.next().toJson());
@@ -37,14 +38,12 @@ public class Main {
 		} finally {
 		    cursor.close();
 		}
-						
-		mongoClient.close();
 		
 		final ClarifaiClient client = new ClarifaiBuilder("ZRGRVhSvL-ns5ZSLMRlr2rB8l_hgwrL1OuQBiukg", "xRjh5V5UwPoxBhhtW5DhJWKVla7pCFYHWvWfzmqh").buildSync();
 
 		client.getToken();
 		
-		String url = "http://vignette1.wikia.nocookie.net/forgottenrealms/images/f/f8/Monster_Manual_5e_-_Bugbear_-_p33.jpg/revision/latest?cb=20141109231300";
+		String url = "http://cdn.quotationof.com/images/ape-quotes-5.jpg";
 		
 		final List<ClarifaiOutput<Concept>> predictionResults =
 			    client.getDefaultModels().generalModel() // You can also do client.getModelByID("id") to get custom models
@@ -61,11 +60,27 @@ public class Main {
 		
 		Matcher matcher = pattern.matcher(names);
 		
-		while(matcher.find()){
+		String[] arrayOfKeys = new String[18];
+	    int i = 0;
+		while(matcher.find() && i < 18){
 			System.out.println(matcher.group(1));
+			arrayOfKeys[i] = matcher.group(1);
+			arrayOfKeys[i] = arrayOfKeys[i].substring(0, 1).toUpperCase() + arrayOfKeys[i].substring(1);
+			i++;
 		}
-
 		
+		Document myDoc = collection.find().first();
+		
+		for(int k = 0; k < arrayOfKeys.length; k++){
+
+			myDoc = collection.find(eq("name", arrayOfKeys[k])).first();
+			
+			if(myDoc != null) {
+				System.out.println(myDoc);
+			}
+		}
+		
+		mongoClient.close();
 		
 	}
 

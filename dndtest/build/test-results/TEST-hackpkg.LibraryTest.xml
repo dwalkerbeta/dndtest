@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hackpkg.LibraryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-10-09T00:52:39" hostname="Davids-Macbook.local" time="0.001">
+<testsuite name="hackpkg.LibraryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-10-09T01:09:22" hostname="Davids-Macbook.local" time="0.002">
   <properties/>
-  <testcase name="testSomeLibraryMethod" classname="hackpkg.LibraryTest" time="0.001"/>
+  <testcase name="testSomeLibraryMethod" classname="hackpkg.LibraryTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,0 +1,22 @@
+.modal-dialog {
+
+  background-color: white;
+  text-align: center;
+  padding: 1em;
+}
+
+.labelBlack {
+
+  color: black;
+}
+
+p {
+  font-size: 1.7em;
+
+}
+
+.listSize {
+
+  font-size: 1.7em;
+  padding: .6em;
+}

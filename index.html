@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DnD Monster Lookup</title>
+    <link rel="icon" href="dnd.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="bootstrap.js"></script>
+
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">monsterlookup.net</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h1>Enter If You Dare</h1>
+                    <p>Quick lookup based on images</p>
+                </div>
+                <div class="col-sm-2">
+                    <img src="monster.jpg" alt="Monster" align="right" class="img-circle img-responsive" style="height:10em;width:10em;">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-7">
+                <h1>Paste your image URL here:</h1>
+                <form action="cgi-bin/readimg.py" method="GET">
+                    <br>
+                    <input type="text" name="URL" value="" style="width:500px">
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit">
+                    <br>
+                </form>
+
+
+            </div>
+            <div class="col-sm-4">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
